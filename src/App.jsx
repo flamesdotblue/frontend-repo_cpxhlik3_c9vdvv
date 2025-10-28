@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import Products from './components/Products';
 import Contact from './components/Contact';
+import { motion } from 'framer-motion';
 
 const App = () => {
   return (
@@ -11,16 +12,22 @@ const App = () => {
       <Features />
       <Products />
       <Contact />
-      <footer className="border-t border-white/10 bg-indigo-950/80">
+      <motion.footer
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6 }}
+        className="border-t border-white/10 bg-indigo-950/80"
+      >
         <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-white/70">
           <p className="text-sm">© {new Date().getFullYear()} Your Startup — GenAI products, delivered fast.</p>
           <nav className="flex items-center gap-4 text-sm">
-            <a href="#features" className="hover:text-white">Features</a>
-            <a href="#products" className="hover:text-white">Products</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
+            <a href="#features" className="hover:text-white transition-colors">Features</a>
+            <a href="#products" className="hover:text-white transition-colors">Products</a>
+            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
           </nav>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 };

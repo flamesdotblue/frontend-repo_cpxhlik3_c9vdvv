@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -18,15 +19,44 @@ const Contact = () => {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(500px_300px_at_20%_10%,rgba(255,255,255,0.10),transparent_50%),radial-gradient(600px_300px_at_80%_90%,rgba(255,255,255,0.06),transparent_60%)]" />
       <div className="relative max-w-4xl mx-auto px-6">
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur px-4 py-2 text-white border border-white/20 mb-6">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur px-4 py-2 text-white border border-white/20 mb-6"
+          >
             <Mail className="w-4 h-4 text-amber-300" />
             <span className="text-sm font-medium">Let’s build something brilliant</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold">Get in touch</h2>
-          <p className="text-white/80 mt-2">Tell us about your use case and timelines — we’ll respond within 24 hours.</p>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="text-3xl md:text-4xl font-extrabold"
+          >
+            Get in touch
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-white/80 mt-2"
+          >
+            Tell us about your use case and timelines — we’ll respond within 24 hours.
+          </motion.p>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-10 grid grid-cols-1 gap-4">
+        <motion.form
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-10 grid grid-cols-1 gap-4"
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="text"
@@ -54,12 +84,17 @@ const Contact = () => {
             required
           />
           <div className="flex justify-center">
-            <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 px-6 py-3 text-white font-semibold shadow-lg shadow-pink-500/30 hover:scale-[1.01] transition-transform">
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-pink-500 via-fuchsia-500 to-violet-500 px-6 py-3 text-white font-semibold shadow-lg shadow-pink-500/30"
+            >
               Send message
               <Send className="w-4 h-4" />
-            </button>
+            </motion.button>
           </div>
-        </form>
+        </motion.form>
       </div>
     </section>
   );
